@@ -1,0 +1,51 @@
+.nickNameContainer
+{
+  padding-top: 40vh !important;
+}
+.nickName
+{
+  border: 2px solid #505050;
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 15px;
+}
+.modelBackground
+{
+  background-color: #f2f2f2;
+}
+body
+{
+  height: 97vh;
+  width: 97vw;
+  padding-left: 5px;
+}
+.msg
+{
+  min-height: 60px;
+  border: 2px solid #505050;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.nickNameLogo
+{
+  height: 50px;
+  width: 50px;
+  border: 1px #17a2b8 solid;
+  background-color: #17a2b8;
+  color: white;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+.nickNameLabel
+{
+  font-size: medium;
+  font-weight: bold;
+}
+.msgContainer
+{
+  min-height: 86vh;
+  max-height: 86vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 30px;
+}

@@ -1,0 +1,97 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--<div *ngIf="message.nickName==''" style="margin: auto; width: 50vw">
+  <div class="row form-group">
+    <input type="text" class="form-control" [(ngModel)]="nickName">
+  </div>
+  <div class="row form-group">
+    <input type="button" value="Please Choose Nick Name" (click)="setNickName()" class="btn btn-info form-control">
+  </div>
+</div>
+<div *ngIf="message.nickName!=''">
+  <div style=" max-height: 85vh; min-height: 85vh; overflow-y: scroll;">
+    <div *ngFor="let msg of messages" >
+      <label>Nick Name: {{msg.nickName}}</label>
+      <br>
+      <label>{{msg.text}}</label>
+      <hr style="height: 1px; background-color: black; margin: auto;width: 95vw;">
+    </div>
+
+  </div>
+  <hr>
+  <div style="height: 5vh">
+    <div class="row form-group">
+      <div class="col-xs-8 col-sm-8 col-md-10 col-lg-11">
+        <input type="text" class="form-control" [(ngModel)]="message.text">
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-1">
+        <input type="button" value="Send" style="border-radius: 75%" (click)="sendMesage()" class="btn btn-info form-control">
+      </div>
+    </div>
+
+  </div>
+</div>-->
+<body>
+  <div *ngIf="message.nickName==''" class="nickNameContainer">
+    <div class="row">
+      <div class="col-xs-12 col-md-12 col-md-4 col-lg-4"></div>
+      <div class="nickName col-xs-12 col-md-12 col-md-4 col-lg-4">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+            <input class="form-control input-sm" placeholder="Choose Nick Name" [(ngModel)]="nickName">
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+            <button (click)="setNickName()" class="btn btn-info" style="width: 50%; float: right">OK</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-12 col-md-4 col-lg-4"></div>
+    </div>
+  </div>
+  <div *ngIf="message.nickName!=''">
+    <div class="row form-group">
+      <div id="msgContainer" #msgContainer [scrollTop]="msgContainer.scrollHeight" class="msgContainer col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div *ngFor="let msg of messages" [ngStyle]="{'background-color' : msg.senderId==chatService.socket.id ? '#80808030' : 'white'}" class=" form-group msg col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div *ngIf="msg.senderId!=chatService.socket.id" class="row">
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1">
+                <div class="nickNameLogo"></div>
+              </div>
+              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-11">
+                <div class="row">
+                  <label class="nickNameLabel">{{msg.nickName}}</label>
+                </div>
+                <div class="row">
+                  {{msg.text}}
+                </div>
+              </div>
+            </div>
+            <div *ngIf="msg.senderId==chatService.socket.id" class="row">
+              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-11">
+                <div style="right: 15px; position: absolute" class="row">
+                  <label class="nickNameLabel">{{msg.nickName}}</label>
+                </div>
+                <div style="float: right;margin-top: 25px" class="row">
+                  {{msg.text}}
+                </div>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1">
+                <div class="nickNameLogo"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <hr>
+        <div class="row">
+          <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11">
+            <input type="text" class="form-control" [(ngModel)]="message.text">
+          </div>
+          <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+            <input type="button" value="Send" (click)="sendMesage(msgContainer)" class="btn btn-info form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
